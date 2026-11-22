@@ -148,9 +148,6 @@ export class GeneratorController {
                 .catch(() => {
                     new Toast(`복사에 실패 했습니다.`);
                 })
-
-                    // alert("복사에 실패했습니다.\n잠시후 다시 시도해주세요.")
-                
             })
         })
     }

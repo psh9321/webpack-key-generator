@@ -10,7 +10,7 @@ export default function Config(
     const isProduction = argv.mode === "production";
 
     return {
-        mode : isProduction ? "production" : "development",
+        mode : argv.mode,
         devtool : isProduction ? false : "source-map",
         entry : "./app.ts",
         output : {

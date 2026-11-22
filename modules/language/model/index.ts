@@ -20,7 +20,7 @@ export class LanguageModel {
         let currentType = this.GetLanguageType();
 
         if(!currentType) {
-            this.SetLanguageType((navigator.language.split("-")[0] as LANGUAGE_TYPE)??"ko")
+            this.SetLanguageType((navigator.language.split("-")[0].toLowerCase() as LANGUAGE_TYPE)??"ko")
         }
 
         this.SetLanguage(this.GetLanguageType() as LANGUAGE_TYPE);

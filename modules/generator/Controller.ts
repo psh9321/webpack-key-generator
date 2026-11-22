@@ -2,47 +2,46 @@ import type { GeneratorModel } from "./model";
 import type { GeneratorView } from "./View";
 
 import { Toast } from "../../util/Toast";
+import { LoadingView } from "../../util/LoadingView";
 
 export class GeneratorController {
     constructor(
-        view : GeneratorView,
-        model : GeneratorModel,
+        View : GeneratorView,
+        Model : GeneratorModel,
     ) {
-
-        
         /** RSA Form 이벤트 */
-        view.form.rsa?.addEventListener("submit", async e => {
+        View.form.rsa?.addEventListener("submit", async e => {
             e.preventDefault();
     
             try {
                 const self = e.currentTarget as HTMLFormElement;
 
-                const selectedBit = new FormData(self).get(model.inputNames.rsa.bit);
+                const selectedBit = new FormData(self).get(Model.inputNames.rsa.bit);
 
                 if(!selectedBit) return console.log(`selectedBit undefined ${selectedBit}`)
 
-                // rsaLoadingView.style.visibility = "visible";
+                const loadingView = new LoadingView(self.parentElement as HTMLElement);
 
-                const { publicKey ,privateKey } = await model.RSA.GenerateRSAKey(Number(selectedBit));
+                const { publicKey ,privateKey } = await Model.RSA.GenerateRSAKey(Number(selectedBit));
 
-                const publicKeyBuffer = await model.RSA.KeyToArrayBuffer("public", publicKey);
-                const privateKeyBuffer = await model.RSA.KeyToArrayBuffer("private", privateKey);
+                const publicKeyBuffer = await Model.RSA.KeyToArrayBuffer("public", publicKey);
+                const privateKeyBuffer = await Model.RSA.KeyToArrayBuffer("private", privateKey);
 
-                if(view.textarea.rsa.rsaPublic) {
-                    view.textarea.rsa.rsaPublic.textContent = model.RSA.ArrayBufferToPEM(publicKeyBuffer);
+                if(View.textarea.rsa.rsaPublic) {
+                    View.textarea.rsa.rsaPublic.textContent = Model.RSA.ArrayBufferToPEM(publicKeyBuffer);
                 }
                 else {
-                    console.log("RSA Public Key TextArea undefined", view.textarea.rsa.rsaPublic)
+                    console.log("RSA Public Key TextArea undefined", View.textarea.rsa.rsaPublic)
                 }
 
-                if(view.textarea.rsa.rsaPrivate) {
-                    view.textarea.rsa.rsaPrivate.textContent = model.RSA.ArrayBufferToPEM(privateKeyBuffer);
+                if(View.textarea.rsa.rsaPrivate) {
+                    View.textarea.rsa.rsaPrivate.textContent = Model.RSA.ArrayBufferToPEM(privateKeyBuffer);
                 }
                 else {
-                    console.log("RSA Public Key TextArea undefined", view.textarea.rsa.rsaPublic)
+                    console.log("RSA Public Key TextArea undefined", View.textarea.rsa.rsaPublic)
                 }
 
-                // rsaLoadingView.style.visibility = "hidden";
+                loadingView.Remove();
             }
             catch(err) {
                 console.error(err);
@@ -50,32 +49,35 @@ export class GeneratorController {
         })
 
         /** AES Form 이벤트 */
-        view.form.aes?.addEventListener("submit", async e => {
+        View.form.aes?.addEventListener("submit", async e => {
             e.preventDefault();
+
             try {
                 const self = e.currentTarget as HTMLFormElement;
 
                 const formData = new FormData(self);
 
-                const selectedBit = formData.get(model.inputNames.aes.bit);
+                const selectedBit = formData.get(Model.inputNames.aes.bit);
 
-                const selectedFormat = formData.get(model.inputNames.aes.format);
+                const selectedFormat = formData.get(Model.inputNames.aes.format);
 
                 if(!selectedBit || !selectedFormat) return console.log(`undefined Required value bit=${selectedBit} \n format=${selectedFormat}`,);
 
                 if(selectedBit === "192" && navigator.userAgent.toLowerCase().includes("chrome")) return alert("크롬/엣지 브라우저에서 192Bit를 지원하지않습니다.");
 
-                const key = await model.AES.GenerateAESKey(Number(selectedBit));
+                const loadingView = new LoadingView(self.parentElement as HTMLElement);
+                console.log("???")
+                const key = await Model.AES.GenerateAESKey(Number(selectedBit));
 
-                const buffer = await model.AES.KeyToArrayBuffer(key);
+                const buffer = await Model.AES.KeyToArrayBuffer(key);
 
-                if(view.textarea.aes) {
+                if(View.textarea.aes) {
                     switch (selectedFormat) {
                         case "base64":
-                            view.textarea.aes.textContent = model.AES.ArrayBufferToBase64(buffer);
+                            View.textarea.aes.textContent = Model.AES.ArrayBufferToBase64(buffer);
                         break;
                         case "hex": 
-                            view.textarea.aes.textContent = model.AES.ArrayBufferToHex(buffer);
+                            View.textarea.aes.textContent = Model.AES.ArrayBufferToHex(buffer);
                         break;
                     
                         default:
@@ -83,8 +85,10 @@ export class GeneratorController {
                     }
                 }
                 else {
-                    console.log("AES Key TextArea undefined", view.textarea.aes)
+                    console.log("AES Key TextArea undefined", View.textarea.aes)
                 }
+
+                loadingView.Remove();
             }
             catch(err) {
                 console.error(err);
@@ -92,7 +96,7 @@ export class GeneratorController {
         })
 
         /** 생성한 키 복사 버튼 */
-        const btns = [...Object.values(view.btnCopy.rsa), view.btnCopy.aes];               
+        const btns = [...Object.values(View.btnCopy.rsa), View.btnCopy.aes];               
         btns.forEach(el => {
             el?.addEventListener("click", e => {
 
@@ -110,17 +114,17 @@ export class GeneratorController {
                 switch (target) {
                     case "rsa-private":
                         toastContents = "RSA 비공개키";
-                        contents = view.textarea.rsa.rsaPrivate?.value as string
+                        contents = View.textarea.rsa.rsaPrivate?.value as string
                     break;
 
                     case "rsa-public":
                         toastContents = "RSA 공개키"
-                        contents = view.textarea.rsa.rsaPublic?.value as string
+                        contents = View.textarea.rsa.rsaPublic?.value as string
                     break;
 
                     case "aes":
                         toastContents = "AES키"
-                        contents = view.textarea.aes?.value as string
+                        contents = View.textarea.aes?.value as string
                     break;
                 
                     default:

@@ -10,7 +10,6 @@
     background-color: rgba(0,0,0,0.4);
     border-radius: 0 0 10px 10px;
     z-index: 1;
-    visibility: hidden;
 }
 
 .loadingView svg {

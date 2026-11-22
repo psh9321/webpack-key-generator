@@ -15,7 +15,7 @@
 
 #footer address dl dt {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 5px;
     font-family: "bold";
 }
@@ -28,7 +28,7 @@
 
 #footer address dl > dd a {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 5px;
     color: var(--main-brand);
     /* font-size: 0.8rem; */

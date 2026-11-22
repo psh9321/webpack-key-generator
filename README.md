@@ -9,17 +9,17 @@
 
 ## 프로젝트 구조 및 MVC 패턴
 ```text
-├── html/             # 페이지 HTML
-├── css/              # CSS
-├── font/             # 폰트
-├── img/              # 이미지
-├── modules/          # 기능별 모듈
-│   ├── model/         # 해당 기능 로직 및 데이터
-│   ├── Controller.ts  # Model과 View 제어
-│   ├── View.ts        # 해당 기능 View
-│   └── index.ts       # 모듈 진입점
-├── util/             # 공통 유틸리티
-└── app.ts            # 애플리케이션 진입점
+├── html : 페이지 HTML
+├── css : CSS
+├── font : 폰트
+├── img : 이미지
+├── modules : 기능별 모듈
+│   ├── model : 해당 기능 로직 및 데이터
+│   ├── Controller.ts : Model과 View 제어
+│   ├── View.ts : 해당 기능 View
+│   └── index.ts : 모듈 진입점
+├── util : 공통 유틸리티
+└── app.ts : 애플리케이션 진입점
 ```
 
 ## 주요 기능

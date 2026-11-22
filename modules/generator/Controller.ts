@@ -109,7 +109,7 @@ export class GeneratorController {
 
                 if(document.getElementById("toast")) return
 
-                if (!navigator.clipboard?.writeText) return new Toast(`복사를 지원하지 않는 환경 입니다.`);
+                if (!navigator.clipboard.writeText) return new Toast(`복사를 지원하지 않는 환경 입니다.`);
 
                 const self = e.currentTarget as HTMLButtonElement;
 

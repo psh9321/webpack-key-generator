@@ -1,4 +1,5 @@
 # Key Generator
+ https://psh9321.github.io/webpack-key-generator/
 
 ## 주요 기술 스택
  - Webpack
@@ -25,6 +26,7 @@
  - 한국어, 영어 다국어 처리
 
 ## 기능 테스트
+ - readme 제외 commit시 workflow 실행
 
 ### 실행 커멘드
  - 테스트 실행해 : pnpm test

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key getnerator</title>
+    <!-- SEO -->
+    <meta name="description" content="RSA 공개키·개인키 및 AES 대칭키를 무료로 생성하세요. RSA 2048·3072·4096 bit, AES 128·192·256 bit와 Base64, Hex 출력 형식을 지원합니다.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="application-name" content="Key Generator">
+
+    <link rel="canonical" href="https://example.com/">
+
+    <!-- Privacy -->
+    <meta name="referrer" content="no-referrer">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Key Generator">
+    <meta property="og:title" content="RSA & AES 암호화 키 생성기">
+    <meta property="og:description" content="RSA 공개키·개인키와 AES 대칭키를 브라우저에서 쉽고 빠르게 생성하세요.">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="RSA 및 AES 암호화 키 생성기">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+</head>
+<body>
+    <h1 class="sr-only">암호화 키 생성기 페이지</h1>
+    <div class="inner">
+        <header id="header">
+            <article class="logo">
+                <h2 class="sr-only">로고</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-keyhole preview-icon"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+                Key Generator
+            </article>
+            <article class="langsBox">
+                <h2 class="sr-only">웹 언어 변경 버튼</h2>
+                <div>
+                    <button data-lang="btnMenu" class="btnLangs">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#131527" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="world lucide lucide-globe preview-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span data-lang="currentLanguage">한국어 </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#131527" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron lucide lucide-chevron-down preview-icon"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+
+                    <ul data-lang="langsList" class="lengsList">
+                        <li>
+                            <button data-lang="btnSet" class="on" value="ko">
+                                한국어
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="checked lucide lucide-circle-check-big preview-icon"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button data-lang="btnSet" value="en">
+                                English
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="checked lucide lucide-circle-check-big preview-icon"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div data-lang="backgroundLayer" class="layer"></div>
+            </article>
+        </header>
+        <section id="banner">
+            <div class="inner">
+                <h2 data-lang="bannerTitle">암호화 키 생성기</h2>
+                <p data-lang="bannerText">RSA(비대칭키)와 AES(대칭키) 키를 쉽고 빠르게 생성하세요.</p>
+            </div>
+        </section>
+        <div class="wrapper">
+            <main id="main">
+                <section>
+                    <h2><span data-lang="rsaHeadText">RSA (비대칭키)</span></h2>
+                    <div class="container">
+                        <form data-form="rsa" id="form-rsa">
+                            <dl>
+                                <dt data-lang="rsaCreateKeyTitle">RSA 키 생성</dt>
+                                <dd data-lang="rsaCreateKeyText">공개키와 개인키 한 쌍을 생성합니다.</dd>
+                            </dl>
+                            <article>
+                                <h2 data-lang="rsaKeyLength">키 길이</h2>
+                                <ul class="btnBitsList">
+                                    <li>
+                                        <input checked name="rsa-bit" type="radio" id="bit2048" value="2048">
+                                        <label for="bit2048">2048 bit <span data-lang="recommend">(권장)</span></label>
+                                    </li>
+                                    <li>
+                                        <input name="rsa-bit" type="radio" id="bit3072" value="3072">
+                                        <label for="bit3072">3072 bit</label>
+                                    </li>
+                                    <li>
+                                        <input name="rsa-bit" type="radio" id="bit4096" value="4096">
+                                        <label for="bit4096">4096 bit</label>
+                                    </li>
+                                </ul>
+                            </article>
+                            <button data-lang="rsaCreateKeyTitle" class="btnCreate">RSA 키 생성</button>
+                        </form>
+                        <article class="resultBox">
+                            <h2 data-lang="submitResultKey">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#B4F1CA" stroke="#007B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big preview-icon"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                                <span data-lang="submitResultKey">생성된 키</span>
+                            </h2>
+                            <article>
+                                <h2 data-lang="rsaCreatePublicKey">공개키 (Public Key)</h2>
+                                <div>
+                                    <textarea data-textarea="rsa-public" id="rsa-public-key" disabled></textarea>
+                                    <button data-copy="rsa-public">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files preview-icon"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></svg>
+                                        <span data-lang="copy">복사</span>
+                                    </button>
+                                </div>
+                            </article>
+                            <article>
+                                <h2 data-lang="rsaCreatePrivateKey">개인키 (Private Key)</h2>
+                                <div>
+                                    <textarea data-textarea="rsa-private" id="rsa-private-key" disabled></textarea>
+                                    <button data-copy="rsa-private">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files preview-icon"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></svg>
+                                        <span data-lang="copy">복사</span>
+                                    </button>
+                                </div>
+                            </article>
+                        </article>
+                        <div id="rsa-loading" class="loadingView">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle preview-icon"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2><span data-lang="aesHeadText">AES (대칭키)</span></h2>
+                    <div class="container">
+                        <form data-form="aes" id="form-aes">
+                            <dl>
+                                <dt data-lang="aesCreateKeyTitle">AES 키 생성</dt>
+                                <dd data-lang="aesCreateKeyText">대칭키 암호화에 사용할 비밀키를 생성합니다.</dd>
+                            </dl>
+                            <article>
+                                <h2 data-lang="rsaKeyLength">키 길이</h2>
+                                <ul class="btnBitsList">
+                                    <li>
+                                        <input name="aes-bit" type="radio" id="bit128" value="128">
+                                        <label for="bit128">128 bit</label>
+                                    </li>
+                                    <li>
+                                        <input name="aes-bit" type="radio" id="bit192" value="192">
+                                        <label for="bit192">192 bit</label>
+                                    </li>
+                                    <li>
+                                        <input checked name="aes-bit" type="radio" id="bit256" value="256">
+                                        <label for="bit256">256 bit <span data-lang="recommend">(권장)</span></label>
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h2 data-lang="outputType">출력 형식</h2>
+                                <ul class="btnBitsList">
+                                    <li>
+                                        <input checked name="aes-format" type="radio" id="base64" value="base64">
+                                        <label for="base64">Base64 <span data-lang="recommend">(권장)</span></label>
+                                    </li>
+                                    <li>
+                                        <input name="aes-format" type="radio" id="hex" value="hex">
+                                        <label for="hex">Hex <span data-lang="hex">(16진수)</span></label>
+                                    </li>
+                                </ul>
+                            </article>
+                            <button data-lang="aesCreateKeyTitle" class="btnCreate">AES 키 생성</button>
+                        </form>
+                        <article class="resultBox">
+                            <h2  data-lang="submitResultKey">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#B4F1CA" stroke="#007B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big preview-icon"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                                <span data-lang="submitResultKey">생성된 키</span>
+                            </h2>
+                            <article>
+                                <h2><span data-lang="aesCreateKey">AES키</span> <span>(Base64, 356 Bit)</span></h2>
+                                <div>
+                                    <textarea data-textarea="aes" disabled></textarea>
+                                    <button data-copy="aes">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files preview-icon"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></svg>
+                                        <span data-lang="copy">복사</span>
+                                    </button>
+                                </div>
+                            </article>
+                            <dl>
+                                <dt>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-exclamation-point preview-icon"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                                    <span data-lang="aesInfoDt">AES 키 사용 안내</span>
+                                </dt>
+                                <dd data-lang="aesInfoDd01">AES는 동일한 비밀키로 암호화와 복호화를 수행하는 대칭키 방식입니다.</dd>
+                                <dd data-lang="aesInfoDd02">키 길이가 길수록 보안 수준이 높아집니다. (일반적으로 256 bit 권장)</dd>
+                                <dd data-lang="aesInfoDd03">생성된 키는 안전한 곳에 보관하세요.</dd>
+                            </dl>
+                        </article>
+                        <div id="aes-loading" class="loadingView">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle preview-icon"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer id="footer">
+                <article class="logo">
+                    <h2 class="sr-only">로고</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5C4DEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-keyhole preview-icon"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+                    Key Generator
+                </article>
+                <address>
+                    <dl>
+                        <dt>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
+                            </svg>Developed by psh9321
+                        </dt>
+                        <dd>
+                            <a target="_blank" href="https://github.com/psh9321">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M9 19c-4.3 1.4-4.3-2.5-6-3
+                                            m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6
+                                            c3-.3 6.2-1.5 6.2-6.8
+                                            A5.3 5.3 0 0 0 19 5
+                                            a4.9 4.9 0 0 0-.1-3.7
+                                            S17.7.9 15 2.7
+                                            a13.4 13.4 0 0 0-7 0
+                                            C5.3.9 4.1 1.3 4.1 1.3
+                                            A4.9 4.9 0 0 0 4 5
+                                            a5.3 5.3 0 0 0-1.3 3.7
+                                            c0 5.3 3.2 6.5 6.2 6.8
+                                            a3.4 3.4 0 0 0-.9 2.6V22"/>
+                                </svg>GitHub
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="mailto:parksuhyun9321@gmail.com">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <path d="m2 6 10 7L22 6"/>
+                                </svg>Contact
+                            </a>
+                        </dd>
+                    </dl>
+                </address>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

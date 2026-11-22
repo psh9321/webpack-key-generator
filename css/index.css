@@ -1,0 +1,77 @@
+@import "./reset.css";
+@import "./font.css";
+@import "./global.css";
+@import "./header.css";
+@import "./toast.css";
+@import "./banner.css";
+@import "./loadingView.css";
+@import "./resultBox.css";
+@import "./form.css";
+@import "./logo.css";
+@import "./footer.css";
+
+body {
+    font-family: "default";
+    padding-top: 20px;
+    color: var(--light-text-color);
+    background-color: #F6F7FD;
+    user-select: none;
+}
+
+/* body.dark {
+    color: var(--dark-text-color);
+    background-color: #100E30;
+} */
+
+.inner {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    background-color: #FBFBFE;
+}
+
+#main {
+    position: relative;
+    top: -30px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+#main section {
+    background-color: #FCFCFE;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.15);
+    border: 1px solid var(--main-border);
+}
+
+#main section:nth-of-type(n+2) {
+    margin-top: 30px;
+}
+
+#main section .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+#main section > h2 {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--main-border);    
+}
+
+#main section > h2 span {
+    display: inline-block;
+    padding: 15px 40px;
+    color: var(--main-brand);
+    font-family: "bold";
+    background-color: #fbf8f8;
+    border-radius: 10px;    
+    box-shadow: 2px 2px 2px var(--main-brand);
+}

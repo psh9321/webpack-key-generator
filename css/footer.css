@@ -1,0 +1,40 @@
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 25px 20px;
+    background-color: #fff;
+    border-top: 1px solid var(--main-border);
+}
+
+#footer address dl svg {
+    width: 20px;
+    height: 20px;
+}
+
+#footer address dl dt {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "bold";
+}
+
+#footer address dl dd {
+    display: block;
+    width: 100%;
+    margin-top: 10px;    
+}
+
+#footer address dl > dd a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--main-brand);
+    /* font-size: 0.8rem; */
+}
+
+/* #footer address dl > dd a svg {
+    width: 15px;
+    height: 15px;
+} */

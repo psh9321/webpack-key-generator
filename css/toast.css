@@ -1,0 +1,29 @@
+#toast {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+#toast p {
+    position: absolute;
+    bottom: -100%;
+    right: 100px;
+    display: inline-block;
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    background-color: var(--main-brand);
+    border-radius: 100px;
+    box-shadow: 8px 8px 8px rgba(0,0,0,0.5);
+    transition: 0.25s ease;
+}
+
+#toast.on p{
+    bottom: 20px;
+}

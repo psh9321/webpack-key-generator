@@ -1,0 +1,40 @@
+{
+    "bannerTitle": "Encryption Key Generator",
+    "bannerText": "Quickly and easily generate RSA (asymmetric) and AES (symmetric) keys.",
+
+    "rsaHeadText": "RSA (Asymmetric Key)",
+
+    "rsaCreateKeyTitle": "Generate RSA Keys",
+
+    "rsaCreateKeyText": "Generate a public and private key pair.",
+
+    "rsaCreatePublicKey": "Public Key",
+
+    "rsaCreatePrivateKey": "Private Key",
+
+    "aesHeadText": "AES (Symmetric Key)",
+
+    "aesCreateKeyTitle": "Generate AES Key",
+
+    "aesCreateKeyText": "Generate a secret key for symmetric encryption.",
+
+    "aesCreateKey": "AES Key",
+
+    "outputType": "Output Format",
+
+    "aesInfoDt": "AES Key Usage Guide",
+
+    "aesInfoDd01" : "AES is a symmetric encryption algorithm that uses the same secret key for both encryption and decryption.",
+    "aesInfoDd02" : "Longer key lengths provide stronger security. (256-bit is generally recommended.)",
+    "aesInfoDd03" : "Keep your generated key in a secure location.",
+
+    "rsaKeyLength": "Key Length",
+
+    "recommend": "(Recommended)",
+
+    "submitResultKey": "Generated Keys",
+
+    "copy": "Copy",
+    "hex" : "hexadecimal"
+
+}

@@ -1,0 +1,23 @@
+{
+  "name": "webpack-project01",
+  "version": "1.0.0",
+  "description": "RSA 공개키·개인키 및 AES 대칭키를 무료로 생성합니다. RSA 2048·3072·4096 bit, AES 128·192·256 bit와 Base64, Hex 출력 형식을 지원합니다.",
+  "main": "app.ts",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "webpack --mode production --config webpack.config.ts",
+    "watch": "webpack --mode development -w --config webpack.config.ts"
+  },
+  "keywords": ["RSA 키생성", "AES 키생성"],
+  "author": "https://github.com/psh9321",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^7.1.5",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.8",
+    "jsdom": "^31.0.1",
+    "mini-css-extract-plugin": "^2.10.2",
+    "webpack": "^5.113.0",
+    "webpack-cli": "^7.3.1"
+  }
+}

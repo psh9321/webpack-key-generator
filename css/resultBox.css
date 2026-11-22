@@ -1,0 +1,92 @@
+.resultBox {
+    position: relative;
+    width: calc(100% - 520px);
+    padding: 20px;
+    background-color: #F5F5FC;
+    border-radius: 10px;    
+}
+
+.resultBox > h2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+.resultBox article:nth-of-type(n+2) {
+    margin-top: 30px;
+}
+
+.resultBox > article > div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.resultBox div textarea {
+    width: calc(100% - 90px);
+    height: 50px;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid var(--main-border);
+    border-radius: 6px;
+}
+
+.resultBox div button {
+    position: relative;
+    top: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    min-width: 70px;
+    height: 32px;
+    font-size: 0.9rem;
+    border: 1px solid var(--main-border);
+    border-radius: 6px;
+}
+
+.resultBox div button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.resultBox dl {
+    margin-top: 35px;
+}
+
+.resultBox dl dt {
+    display: flex;
+    align-items: center;
+    gap : 8px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-family: "bold";
+}
+
+.resultBox dl dt svg {
+    width: 20px;
+    height: 20px;
+}
+
+.resultBox dl dd {
+    position:relative;
+    display: flex;
+    align-items: center;
+    color: var(--default-text-color);
+    font-size: 0.8rem;
+}
+
+.resultBox dl dd:before {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    margin-right: 6px;
+    background-color: var(--default-text-color);
+    border-radius: 100%;
+}
+
+.resultBox dl dd:nth-of-type(n+2) {
+    margin-top: 10px;
+}

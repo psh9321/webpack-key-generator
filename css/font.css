@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "default";
+    src: url("../font/KoPub\ Batang\ Medium.ttf");
+}
+
+@font-face {
+    font-family: "bold";
+    src: url("../font/KoPub\ Dotum\ Bold.ttf");
+}

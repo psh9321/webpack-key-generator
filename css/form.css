@@ -1,0 +1,63 @@
+#main > section form {
+    width : 450px;
+}
+
+#main > section form dl dt {
+    font-size: 1.3rem;
+    font-family: "bold";
+}
+
+#main > section form dl dd {
+    margin: 8px 0 30px;
+    color: var(--default-text-color);
+    font-size: 0.9rem;
+}
+
+#main > section article h2 {
+    font-size: 0.9rem;
+    font-family: "bold";
+}
+
+#main > section form > article:nth-of-type(n+2) {
+    margin-top: 30px;
+}
+
+#main > section form > article .btnBitsList {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#main > section form > article .btnBitsList li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+#main > section form > article .btnBitsList li input[type="radio"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--main-border);
+  border-radius: 50%;
+  cursor: pointer;    
+}
+
+#main > section form > article .btnBitsList li input[type="radio"]:checked {
+  border-color: var(--main-brand);
+  background-color: var(--main-brand);
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+#main > section form .btnCreate {
+    display: block;
+    width: 100%;
+    margin-top: 60px;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 1.2rem;
+    background-color: var(--main-brand);
+    border-radius: 6px;
+}
+

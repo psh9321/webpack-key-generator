@@ -12,15 +12,18 @@ export class GeneratorController {
         /** RSA Form 이벤트 */
         View.form.rsa?.addEventListener("submit", async e => {
             e.preventDefault();
+
+            const self = e.currentTarget as HTMLFormElement;
     
+            const loadingView = new LoadingView(self.parentElement as HTMLElement);
+
             try {
-                const self = e.currentTarget as HTMLFormElement;
 
                 const selectedBit = new FormData(self).get(Model.inputNames.rsa.bit);
 
                 if(!selectedBit) return console.log(`selectedBit undefined ${selectedBit}`)
 
-                const loadingView = new LoadingView(self.parentElement as HTMLElement);
+                loadingView.Render();
 
                 const { publicKey ,privateKey } = await Model.RSA.GenerateRSAKey(Number(selectedBit));
 
@@ -40,11 +43,12 @@ export class GeneratorController {
                 else {
                     console.log("RSA Public Key TextArea undefined", View.textarea.rsa.rsaPublic)
                 }
-
-                loadingView.Remove();
             }
             catch(err) {
                 console.error(err);
+            }
+            finally {
+                loadingView.Remove();
             }
         })
 
@@ -52,8 +56,10 @@ export class GeneratorController {
         View.form.aes?.addEventListener("submit", async e => {
             e.preventDefault();
 
+            const self = e.currentTarget as HTMLFormElement;
+
+            const loadingView = new LoadingView(self.parentElement as HTMLElement);
             try {
-                const self = e.currentTarget as HTMLFormElement;
 
                 const formData = new FormData(self);
 
@@ -65,8 +71,8 @@ export class GeneratorController {
 
                 if(selectedBit === "192" && navigator.userAgent.toLowerCase().includes("chrome")) return alert("크롬/엣지 브라우저에서 192Bit를 지원하지않습니다.");
 
-                const loadingView = new LoadingView(self.parentElement as HTMLElement);
-                console.log("???")
+                loadingView.Render();
+   
                 const key = await Model.AES.GenerateAESKey(Number(selectedBit));
 
                 const buffer = await Model.AES.KeyToArrayBuffer(key);
@@ -87,11 +93,12 @@ export class GeneratorController {
                 else {
                     console.log("AES Key TextArea undefined", View.textarea.aes)
                 }
-
-                loadingView.Remove();
             }
             catch(err) {
                 console.error(err);
+            }
+            finally {
+                loadingView.Remove();
             }
         })
 

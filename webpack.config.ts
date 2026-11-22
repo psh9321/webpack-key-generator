@@ -39,7 +39,10 @@ export default function Config(
             ],
         },
         plugins: [
-            new HtmlWebpackPlugin({ template: "./html/index.html" }),
+            new HtmlWebpackPlugin({ 
+                template: "./html/index.html",
+                favicon : "./img/favicon.svg"
+            }),
             new MiniCssExtractPlugin({ filename: "main.css" }),
         ],
     }
